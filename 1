@@ -1,0 +1,115 @@
+Q1:
+def fibonacci(n):
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+        
+Q2:
+
+my_set = {1, 2, 3, 4, 5}
+print(my_set)
+x = int(input("Enter a number from the set to remove: "))
+new_set = my_set.remove(x)
+print(f"The updated list is: {new_set}")
+
+Q3:
+my_set = {1, 2, 3, 4, 5}
+print(my_set)
+x = int(input("Enter a number from the set to remove: "))
+new_set = my_set.remove(x)
+print(f"The updated list is: {new_set}")
+
+Q4:
+my_set = {1, 2, 3, 4, 5}
+items_to_remove = {1, 4}
+my_set.difference_update(items_to_remove)
+
+print("Updated set:", my_set)
+
+Q5:
+my_tuple = ('apple', 'banana', 'orange', 'grape', 'banana')
+item = input("Enter the item to find the index: ")
+if item in my_tuple:
+    index = my_tuple.index(item)
+    print(f"Index of '{item}' is: {index}")
+else:
+    print(f"'{item}' not found in the tuple.")
+
+Q6:
+l = input("Enter words: ")
+new = l.split()
+print(new)
+
+Q7:
+user_string = input("Enter a string: ")
+if user_string == user_string[::-1]:
+    print("Palindrome")
+else:
+    print("Not a Palindrome")
+
+Q8:
+def factorial(num):
+    if num == 0:
+        return 0
+    if num == 1:
+        return 1
+    return num * factorial(num - 1)
+
+num = 5
+print(factorial(num))
+
+Q9:
+squares_list = [x**2 for x in range(1, 11)]
+print(f"List of squares: {squares_list}")
+
+Q10:
+def sum_of_even_numbers(numbers):
+    return sum(x for x in numbers if x % 2 == 0)
+
+Q11:
+def reverse_list(lst):
+    return lst[::-1]
+
+Q12:
+def calculate_median(numbers):
+    sorted_numbers = sorted(numbers)
+    n = len(sorted_numbers)
+    if n % 2 == 0:
+        median = (sorted_numbers[n // 2 - 1] + sorted_numbers[n // 2]) / 2
+    else:
+        median = sorted_numbers[n // 2]
+    return median
+
+Q13:
+def calculate_mode(lst):
+  frequency = {}
+  for num in lst:
+      if num in frequency:
+          frequency[num] += 1
+      else:
+          frequency[num] = 1
+  max_frequency = 0
+  mode = None
+  for num, freq in frequency.items():
+      if freq > max_frequency:
+          max_frequency = freq
+          mode = num
+  return mode
+
+Q14:
+n = int(input("Enter your grade: "))
+if n >= 85 and n <= 100:
+    print("A")
+elif n >= 75 and n <= 84:
+    print("B")
+elif n >= 65 and n <= 74:
+    print("C")
+elif n >= 50 and n <= 64:
+    print("D")
+elif n < 50:
+    print("F")
+else:
+    print("Enter a valid grade between 1 and 100")
