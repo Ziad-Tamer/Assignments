@@ -1,0 +1,59 @@
+# Q2: Write a Python program to sum all the items in a list
+
+def sum_of_list(lst):
+    return sum(lst)
+my_list = [1, 2, 3, 4, 5]
+total = sum_of_list(my_list)
+print(f"The sum of the list is: {total}")
+
+# Q4: Write a Python program to get the smallest number from a list
+
+def smallest_number(lst):
+    return min(lst)
+my_list = [5, 1, 8, 3, 2]
+smallest = smallest_number(my_list)
+print(f"The smallest number in the list is: {smallest}")
+
+# Q6: Write a Python program to count the number of strings from a given list of strings
+
+def count_strings(lst):
+    count = 0
+    for string in lst:
+        if len(string) >= 2 and string[0] == string[-1]:
+            count += 1
+    return count
+string_list = ['ziad', 'helwan', 'one piece', 'zz']
+result = count_strings(string_list)
+print(f"Number of valid strings: {result}")
+
+# Q9: Write a Python program to check if a set is a subset of another set
+
+def is_subset(set1, set2):
+    return set1.issubset(set2)
+set_a = {1, 2, 3}
+set_b = {1, 2, 3, 4, 5}
+result = is_subset(set_a, set_b)
+if result:
+    print("Set A is a subset of Set B")
+else:
+    print("Set A is not a subset of Set B")
+
+# Q10: Write a Python program to remove all elements from a given set
+my_set = {1, 2, 3, 4, 5}
+print("Original Set:", my_set)
+my_set.clear()
+print("Set after removing all elements:", my_set)
+
+# Q14: Write a Python program to unzip a list of tuples into individual lists
+
+tuples_list = [(1, 'a'), (2, 'b'), (3, 'c'), (4, 'd')]
+list1, list2 = zip(*tuples_list)
+print("First list:", list(list1))
+print("Second list:", list(list2))
+
+# Q15: Write a Python program to reverse a tuple
+
+my_tuple = (1, 2, 3, 4, 5)
+reversed_tuple = my_tuple[::-1]
+print("Original Tuple:", my_tuple)
+print("Reversed Tuple:", reversed_tuple)
