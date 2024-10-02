@@ -1,0 +1,134 @@
+# Task 1:
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+    def perimeter(self):
+        return (self.length+self.width) * 2
+    def area(self):
+        return self.length * self.width
+    def display(self):
+        print(f"Length: {self.length}, Width: {self.width}, Perimeter = {self.perimeter()}, Area: {self.area()}")
+
+class Parallelepipede(Rectangle):
+    def __init__(self, length, width, height):
+        super().__init__(length, width)
+        self.height = height
+    def volume(self):
+        return self.height * self.length * self.width
+    
+rectangle = Rectangle(10, 5)
+rectangle.display()
+print("\n")
+parallelepipede = Parallelepipede(10, 5, 3)
+parallelepipede.display()
+print(f"Height: {parallelepipede.height}")
+print(f"Volume: {parallelepipede.volume()}")
+
+# Task 2:
+class Person:
+    def __init__(self, name: str, age: str):
+        self.name = name
+        self.age = age
+    def display(self):
+        print(f"Name: {self.name}, Age: {self.age}")
+
+class Student(Person):
+    def __init__(self, name: str, age: str, section: str):
+        super().__init__(name, age)
+        self.section = section
+    def display(self):
+        print(f"Name: {self.name}, Age: {self.age}, Section: {self.section}")
+
+student = Student("Ziad", "19", "AI")
+student.display()
+
+# Task 3:
+class Computation:
+    def __init__(self):
+        pass
+    def factorial(self, n: int) -> int:
+        if n < 0:
+            return None
+        if n == 0:
+            return 1
+        result = 1
+        for i in range(1, n + 1):
+            result *= i
+        return result
+
+    def sum(self, n: int) -> int:
+        return n * (n + 1) // 2
+    def test_prim(self, n: int) -> bool:
+        if n <= 1:
+            return False
+        for i in range(2, int(n**0.5) + 1):
+            if n % i == 0:
+                return False
+        return True
+
+    def test_prims(self, a: int, b: int) -> bool:
+        return self.test_prim(a) and self.test_prim(b)
+
+    def table_mult(self, n: int) -> None:
+        print(f"Multiplication Table for {n}:")
+        for i in range(1, 11):
+            print(f"{n} x {i} = {n * i}")
+
+    def all_tables_mult(self) -> None:
+        for i in range(1, 10):
+            self.table_mult(i)
+            print()
+
+    @staticmethod
+    def list_div(n: int) -> list:
+        divisors = []
+        for i in range(1, n + 1):
+            if n % i == 0:
+                divisors.append(i)
+        return divisors
+
+    @staticmethod
+    def list_div_prim(n: int) -> list:
+        prime_divisors = []
+        for i in Computation.list_div(n):
+            if Computation.test_prim(i,n):
+                prime_divisors.append(i)
+        return prime_divisors
+    
+if __name__ == "__main__":
+    comp = Computation()
+    print(f"Factorial of 5: {comp.factorial(5)}")
+    print(f"Sum of first 5 integers: {comp.sum(5)}") 
+    print(f"Is 7 prime? {comp.test_prim(7)}")  
+    print(f"Is 10 prime? {comp.test_prim(10)}")  
+    print(f"Are 5 and 11 both prime? {comp.test_prims(5, 11)}")  
+    print(f"Are 6 and 10 both prime? {comp.test_prims(6, 10)}")  
+    comp.all_tables_mult()
+    print(f"Divisors of 28: {comp.list_div(28)}")
+    print(f"Prime divisors of 28: {comp.list_div_prim(28)}")
+
+# Task 4:
+def lcs(s1: str, s2: str, i: int, j: int, memo: dict) -> str:
+    if i == 0 or j == 0:
+        return ""
+    if (i, j) in memo:
+        return memo[(i, j)]
+    if s1[i - 1] == s2[j - 1]:
+        memo[(i, j)] = lcs(s1, s2, i - 1, j - 1, memo) + s1[i - 1]
+    else:
+        lcs1 = lcs(s1, s2, i - 1, j, memo)
+        lcs2 = lcs(s1, s2, i, j - 1, memo)
+        memo[(i, j)] = lcs1 if len(lcs1) > len(lcs2) else lcs2
+
+    return memo[(i, j)]
+def longest_common_subsequence(s1: str, s2: str) -> str:
+    memo = {}
+    return lcs(s1, s2, len(s1), len(s2), memo)
+
+if __name__ == "__main__":
+    string1 = "ABCBDAB"
+    string2 = "BDCAB"
+    
+    result = longest_common_subsequence(string1, string2)
+    print(f"The Longest Common Subsequence of '{string1}' and '{string2}' is: '{result}'")
