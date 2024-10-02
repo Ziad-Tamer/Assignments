@@ -1,0 +1,23 @@
+# Q3: Write a Python program to find all the unique words and count the frequency of
+# occurrence from a given list of strings.
+
+def count_word_frequency(strings):
+    word_count = {}
+    for sentence in strings:
+        words = sentence.split()
+        for word in words:
+            word = word.lower().strip(".,!?")
+            if word in word_count:
+                word_count[word] += 1
+            else:
+                word_count[word] = 1
+    return word_count
+    
+strings = [
+    "The one piece!",
+    "The one piece is reaal!",
+    "to be continued."
+]
+word_frequency = count_word_frequency(strings)
+for word, count in word_frequency.items():
+    print(f"{word}: {count}")
