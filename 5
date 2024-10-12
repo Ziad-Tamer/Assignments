@@ -1,0 +1,35 @@
+#Q1:
+import numpy as np
+
+# Q2:
+mat = np.ones((5, 5), dtype="int")
+mat[1:-1, 1:-1] = 0
+print(mat)
+
+#Q3:
+mat = np.full((5, 5), 3)
+
+i = list(range(5))
+i2 = i[::-1]
+mat[i, i] = 1
+mat[i2, i2] = 2
+
+print(mat)
+
+#Q4:
+parameters = np.array([[5, 3 ],
+              [3, -6]])
+biases = np.array([20, 10])
+print(parameters)
+print("----------")
+print(biases)
+
+#Q5:
+mat1 = np.array([[1, 2, 3, 4],
+                 [5, 6, 7, 8]])
+
+mat2 = np.array([["A", "B", "C", "D"],
+                 ["E", "F", "G", "H"],
+                 ])
+
+np.vstack([mat1, mat2])
