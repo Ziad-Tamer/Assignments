@@ -1,0 +1,51 @@
+# 0:
+import numpy as np
+
+# 1:
+sal = pd.read_csv("Salaries.csv")
+
+# 2:
+sal.head()
+
+# 3:
+sal.info
+
+# 4:
+sal['BasePay'] = pd.to_numeric(sal['BasePay'], errors='coerce')
+sal['OvertimePay'] = pd.to_numeric(sal['OvertimePay'], errors='coerce')
+
+# 5:
+sal['BasePay'].mean()
+
+# 6:
+sal['OvertimePay'].max()
+
+# 7:
+sal[sal['EmployeeName'] == 'JOSEPH DRISCOLL']['JobTitle']
+
+# 8:
+sal[sal['EmployeeName'] == 'JOSEPH DRISCOLL']['TotalPayBenefits']
+
+# 9:
+sal.loc[sal['TotalPayBenefits'].idxmax()]
+
+# 10:
+sal.loc[sal['TotalPayBenefits'].idxmin()] # her TotalPayBenefits is negative
+
+# 11:
+sal.groupby('Year').mean()['BasePay']
+
+#12:
+sal['JobTitle'].nunique()
+
+# 13:
+sal['JobTitle'].value_counts().head()
+
+# 14:
+sum(sal[sal["Year"] == 2013]['JobTitle'].value_counts() == 1)
+
+# 15:
+sum(sal['JobTitle'].str.lower().str.contains('chief'))
+
+# 16:
+sal[["TotalPayBenefits","title_len"]].corr() #There is no correlation
