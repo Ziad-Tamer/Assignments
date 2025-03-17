@@ -1,0 +1,41 @@
+import numpy as np
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+def initialize_weights(input_size, hidden_size, output_size):
+    np.random.seed(42)
+    W1 = np.random.randn(input_size, hidden_size)
+    b1 = np.random.randn(hidden_size)
+    W2 = np.random.randn(hidden_size, output_size)
+    b2 = np.random.randn(output_size)
+    return W1, b1, W2, b2
+
+def forward_propagation(X, W1, b1, W2, b2):
+    Z1 = np.dot(X, W1) + b1
+    A1 = sigmoid(Z1)
+    Z2 = np.dot(A1, W2) + b2
+    A2 = sigmoid(Z2)
+    return A2
+
+X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y = np.array([[0], [1], [1], [0]])
+
+input_size = 2
+hidden_size = 3
+output_size = 1
+W1, b1, W2, b2 = initialize_weights(input_size, hidden_size, output_size)
+
+output = forward_propagation(X, W1, b1, W2, b2)
+
+print("Predicted Output:")
+print(output)
+
+​------------------------------------------------------------------------------------
+#  This is the result
+0.5489
+0.5781
+0.5419
+0.5663
+​
+  
