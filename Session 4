@@ -1,0 +1,29 @@
+ASSESSMENT
+
+Task 1: Making Predictions
+write code to make predictions on the test dataset using your trained CNN model.
+
+solution: 
+predictions = x_test.predict()
+predicted_classes = predictions.argmax(axis=1)
+
+
+Task 2: Visualizing Model Predictions
+Write a function that:
+* Displays a test image
+* Shows the predicted and actual label
+* Uses Matplotlib to visualize the image
+
+
+solution:
+def visualize_prediction(model, x_test, y_test, index):
+  prediction = model.predict(np.expand_dims(x_test[index], axis=0))
+  predicted_label = np.argmax(prediction)
+  actual_label = np.argmax(y_test[index])
+  plt.imshow(x_test[index])
+  plt.axis('off')
+  plt.title(title)
+  plt.show()
+
+# Example usage:
+visualize_prediction(model, x_test, y_test, index=5)
